@@ -11,7 +11,22 @@ const letra = document.querySelector("#letra")
 
 send.addEventListener("click",() => {
 if (pass.value === "02082000") {
-    alert(`Titulo: ${titulo.value}\nMusico: ${musico.value}\nGenero: ${genero.value}\nImagem ${imagem.value}\nDescricao: ${descricao.value}\nLetra ${letra.value}`)
+    fetch("https://post-bck.onrender.com/post", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        },
+        body: JSON.stringify({
+            titulo : titulo.value,
+	        musico : musico.value,
+            genero : genero.value,
+            imagem : imagem.value,
+            descricao : descricao.value,
+        })
+    })
+    .then(response => response.json())
+    .then(() => { alert("Feito")})
+    .catch(error => console.error('Error:', error));
 }else {
     alert('Sem permissao otario!')
 }
