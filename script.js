@@ -24,7 +24,7 @@ if (pass.value === "02082000") {
             descricao : descricao.value,
         })
     })
-    .then(response => response.json())
+    .then(response => console.log(response))
     .then(() => { alert("Feito")})
     .catch(error => console.error('Error:', error));
 }else {
